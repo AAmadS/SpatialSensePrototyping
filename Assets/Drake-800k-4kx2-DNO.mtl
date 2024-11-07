@@ -1,0 +1,30 @@
+newmtl Solid
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.0 0.0 0.0
+d 1.0
+Ns 0.0
+illum 0
+
+newmtl Drake-800k-4kx2-DNO.1001
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.0 0.0 0.0
+d 1.0
+Ns 0.0
+illum 0
+map_Kd Drake-800k-4kx2-DNO.1001.png
+map_Bump Drake-800k-4kx2-DNO_normal.1001.png
+map_ao Drake-800k-4kx2-DNO_occlusion.1001.png
+
+newmtl Drake-800k-4kx2-DNO.1002
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.0 0.0 0.0
+d 1.0
+Ns 0.0
+illum 0
+map_Kd Drake-800k-4kx2-DNO.1002.png
+map_Bump Drake-800k-4kx2-DNO_normal.1002.png
+map_ao Drake-800k-4kx2-DNO_occlusion.1002.png
+
