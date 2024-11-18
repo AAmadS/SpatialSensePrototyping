@@ -12,78 +12,87 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        // Initially set materials to transparent and hide objects
+        // Initially set materials and UI elements to transparent and hide objects
         foreach (GameObject obj in tutorialObjects)
         {
             SetObjectAlpha(obj, 0);
+        }
+
+        if (titleObject)
+        {
+            SetObjectAlpha(titleObject, 1); // Ensure the title object is fully visible
+        }
+
+        if (titleCanvas)
+        {
+            titleCanvas.alpha = 1; // Fully visible initially
         }
     }
 
     void Update()
     {
         // Trigger fade-in for testing (e.g., mouse click or controller input)
-        if (!tutorialStarted && Input.GetMouseButtonDown(0))
+        if (!tutorialStarted && Input.GetMouseButtonDown(0) || !tutorialStarted && OVRInput.Get(OVRInput.Button.One))
         {
             tutorialStarted = true;
             StartCoroutine(FadeInTutorialObjects());
         }
     }
 
-    private IEnumerator FadeInTutorialObjects(){
-    float elapsed = 0;
-
-    while (elapsed < fadeDuration)
+    private IEnumerator FadeInTutorialObjects()
     {
-        elapsed += Time.deltaTime;
-        float alpha = Mathf.Clamp01(elapsed / fadeDuration);
-        float fadeOutAlpha = 1 - alpha; // For fading out
+        float elapsed = 0;
 
-        // Fade in tutorial objects
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Clamp01(elapsed / fadeDuration);
+            float fadeOutAlpha = 1 - alpha; // For fading out
+
+            // Fade in tutorial objects
+            foreach (GameObject obj in tutorialObjects)
+            {
+                SetObjectAlpha(obj, alpha);
+            }
+
+            // Fade out 3D title object
+            if (titleObject)
+            {
+                SetObjectAlpha(titleObject, fadeOutAlpha);
+            }
+
+            // Fade out canvas
+            if (titleCanvas)
+            {
+                titleCanvas.alpha = fadeOutAlpha;
+            }
+
+            yield return null;
+        }
+
+        // Ensure final states
         foreach (GameObject obj in tutorialObjects)
         {
-            SetObjectAlpha(obj, alpha);
+            SetObjectAlpha(obj, 1);
         }
 
-        // Fade out 3D title object
         if (titleObject)
         {
-            SetObjectAlpha(titleObject, fadeOutAlpha);
+            SetObjectAlpha(titleObject, 0);
+            titleObject.SetActive(false); // Optionally disable the title object
         }
 
-        // Fade out canvas
         if (titleCanvas)
         {
-            titleCanvas.alpha = fadeOutAlpha;
+            titleCanvas.alpha = 0;
+            titleCanvas.gameObject.SetActive(false); // Optionally disable the canvas
         }
-
-        yield return null;
     }
-
-    // Ensure final states
-    foreach (GameObject obj in tutorialObjects)
-    {
-        SetObjectAlpha(obj, 1);
-    }
-
-    if (titleObject)
-    {
-        SetObjectAlpha(titleObject, 0);
-        titleObject.SetActive(false); // Optionally disable the title object
-    }
-
-    if (titleCanvas)
-    {
-        titleCanvas.alpha = 0;
-        titleCanvas.gameObject.SetActive(false); // Optionally disable the canvas
-    }
-}
-
-
 
     private void SetObjectAlpha(GameObject obj, float alpha)
     {
+        // Handle 3D renderers
         Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
-
         foreach (Renderer renderer in renderers)
         {
             foreach (Material material in renderer.materials)
@@ -108,6 +117,13 @@ public class TutorialManager : MonoBehaviour
                     SetMaterialModeOpaque(material);
                 }
             }
+        }
+
+        // Handle UI elements like CanvasRenderers
+        CanvasRenderer[] canvasRenderers = obj.GetComponentsInChildren<CanvasRenderer>();
+        foreach (CanvasRenderer canvasRenderer in canvasRenderers)
+        {
+            canvasRenderer.SetAlpha(alpha);
         }
     }
 
