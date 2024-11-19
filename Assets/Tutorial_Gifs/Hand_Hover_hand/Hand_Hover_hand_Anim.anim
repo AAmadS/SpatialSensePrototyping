@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Turning_1_animation
+  m_Name: Hand_Hover_hand_Anim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1856266411, guid: dc5f5c186291e7045b9528c92d4cdac5, type: 3}
-    - time: 0.68333334
-      value: {fileID: 1303873638, guid: dc5f5c186291e7045b9528c92d4cdac5, type: 3}
-    - time: 1.3166667
-      value: {fileID: 1387872058, guid: dc5f5c186291e7045b9528c92d4cdac5, type: 3}
+      value: {fileID: -1040163430, guid: 701fef5e3e1d2fe46a6d1afbab010f0f, type: 3}
+    - time: 1
+      value: {fileID: -568225189, guid: 701fef5e3e1d2fe46a6d1afbab010f0f, type: 3}
     - time: 2
-      value: {fileID: 1978778443, guid: dc5f5c186291e7045b9528c92d4cdac5, type: 3}
+      value: {fileID: -568225189, guid: 701fef5e3e1d2fe46a6d1afbab010f0f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -50,10 +48,9 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1856266411, guid: dc5f5c186291e7045b9528c92d4cdac5, type: 3}
-    - {fileID: 1303873638, guid: dc5f5c186291e7045b9528c92d4cdac5, type: 3}
-    - {fileID: 1387872058, guid: dc5f5c186291e7045b9528c92d4cdac5, type: 3}
-    - {fileID: 1978778443, guid: dc5f5c186291e7045b9528c92d4cdac5, type: 3}
+    - {fileID: -1040163430, guid: 701fef5e3e1d2fe46a6d1afbab010f0f, type: 3}
+    - {fileID: -568225189, guid: 701fef5e3e1d2fe46a6d1afbab010f0f, type: 3}
+    - {fileID: -568225189, guid: 701fef5e3e1d2fe46a6d1afbab010f0f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
