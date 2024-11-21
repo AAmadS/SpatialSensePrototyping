@@ -97,6 +97,7 @@ public class TutorialManager : MonoBehaviour
         {
             foreach (Material material in renderer.materials)
             {
+                Material instanceMaterial = material;
                 // Switch to Transparent mode during fade-in
                 if (alpha < 1f)
                 {
